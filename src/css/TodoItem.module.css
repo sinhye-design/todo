@@ -1,0 +1,23 @@
+li {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+}
+li > input[type="checkbox"] {
+  width: 24px;
+  aspect-ratio: 1;
+}
+li input[type="text"] {
+  height: 40px;
+  border-radius: 4px;
+  padding: 8px 12px;
+  flex: 1;
+  border: 1px dashed #ddd;
+  background: #022344;
+}
+li > span {
+  text-align: left;
+  flex: 1;
+  padding: 0 12px;
+}

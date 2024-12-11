@@ -1,0 +1,31 @@
+.app {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  margin: 40px 0 0 0;
+}
+
+/* 검색창 안에 아이콘 넣기 */
+.searchInput {
+  align-self: flex-end;
+  position: relative;
+}
+.searchInput > .ico {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translate(0, -50%);
+  color: #747bff;
+}
+.searchInput > input[type="search"] {
+  height: 40px;
+  border-radius: 4px;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid #ddd;
+}
+
+h1 {
+  font-size: 36px;
+}

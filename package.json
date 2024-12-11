@@ -11,6 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.5.2",
+    "atd": "^0.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
