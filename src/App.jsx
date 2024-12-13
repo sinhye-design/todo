@@ -162,6 +162,7 @@ function App() {
         {/* 2번 */}
         <div className={style.rightwrap}>
           <div className={style.searchInput}>
+            <h2>SEaRCH</h2>
             <SearchOutlined className={style.ico} />
             <input
               type="search"
@@ -184,14 +185,16 @@ function App() {
       </div>
 
       {/* 완료된 항목 관리 
-      여기에 div로 묶어서 선이랑 굴리기*/}
-      <h2>완료된 항목</h2>
-      <TodoList
-        todos={completedTodos}
-        updateTodo={updateTodo}
-        toggleComplete={toggleComplete}
-        deleteTodo={deleteCompletedTodo}
-      />
+      여기에 div로 묶어서 선이랑 굴리기 적용*/}
+        <div className={style.completedTodo}>
+          <h2>완료된 항목</h2>
+          <TodoList
+            todos={completedTodos}
+            updateTodo={updateTodo}
+            toggleComplete={toggleComplete}
+            deleteTodo={deleteCompletedTodo}
+          />
+      </div>
     </div>
   );
 }

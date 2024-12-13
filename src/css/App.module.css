@@ -84,10 +84,11 @@ h1 {
   background-color: #FCFAEE;
 }
 
-/* .App > body {
-  padding: 100px;
-  background-color: blue;
-} */
+.completedTodo {
+  border: 2px solid #21221A; 
+  border-radius: 18px;
+  overflow: hidden;
+}
 
 h2{
   border-bottom: 2px solid #21221A;
