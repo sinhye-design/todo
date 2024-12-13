@@ -1,12 +1,18 @@
 li {
   display: flex;
+  height: 42px;
+  padding: 12px 16px;
+  justify-content: space-between;
   align-items: center;
-  flex: 1;
-  gap: 10px;
+  align-self: stretch;
+  border-bottom: 1.5px solid #79776B;
+  background: #FCFAEE;
 }
 li > input[type="checkbox"] {
-  width: 24px;
+  width: 20px;
   aspect-ratio: 1;
+  top: 50%;
+  transform: translateY(-50%); /* 버튼이 세로로 중앙 정렬되도록 */
 }
 li input[type="text"] {
   height: 40px;

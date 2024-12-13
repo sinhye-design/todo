@@ -7,61 +7,108 @@ import { SearchOutlined } from '@ant-design/icons';
 
 function App() {
 
-  // R 읽기
-  const [todos, setTodos] = useState(() => {
-    const storedTodos = localStorage.getItem("todos");
-    return storedTodos ? JSON.parse(storedTodos) : [];    
-  });
 
-  // const [todos, setTodos] = useState(() => {
-  //   const storedTodos = localStorage.getItem("todos");
-  //   try {
-  //     return storedTodos ? JSON.parse(storedTodos) : [];
-  //   } catch (error) {
-  //     console.error("Failed to parse todos from localStorage:", error);
-  //     return []; // JSON.parse가 실패하면 빈 배열 반환
-  //   }
-  // });
+ // R: 로컬스토리지에서 메모 불러오기
+ const [todos, setTodos] = useState(() => {
+  const storedTodos = localStorage.getItem("todos");
+  return storedTodos ? JSON.parse(storedTodos) : [];    
+});
 
+// 완료된 항목을 따로 관리
+const [completedTodos, setCompletedTodos] = useState(() => {
+  const storedCompletedTodos = localStorage.getItem("completedTodos");
+  return storedCompletedTodos ? JSON.parse(storedCompletedTodos) : [];
+});
 
-
+// useEffect로 메모 변경 시 로컬스토리지 업데이트
 useEffect(() => {
   localStorage.setItem("todos", JSON.stringify(todos));
+  localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
+}, [todos, completedTodos]);
 
-}, [todos]);
-
-
-
-  // C 생성하기 - todo 등록
+// C: 할 일 추가
 const addTodo = (text) => {
-  setTodos([...todos, {
-    id: Date.now(),
-    text,
-    completed: false
-  }]);
-
+  setTodos([...todos, { id: Date.now(), text, completed: false }]);
 };
 
-
-//U 업데이트 - 텍스트 수정하기
-
+// U: 할 일 수정
 const updateTodo = (id, updatedText) => {
-  setTodos(todos.map((todo) => (todo.id === id ? {...todo, text: updatedText} : todo)));
+  setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text: updatedText } : todo)));
 };
 
-
-//U 업데이트 - 완료 토글
-
+// U: 완료 여부 토글
 const toggleComplete = (id) => {
-  setTodos(todos.map((todo) => (todo.id === id ? {...todo, completed : !todo.completed} : todo )));
+  const todo = todos.find((todo) => todo.id === id);
+  if (todo) {
+    todo.completed = !todo.completed;
 
+    // 완료된 항목을 완료된 리스트로 이동
+    if (todo.completed) {
+      setCompletedTodos([...completedTodos, todo]);
+      setTodos(todos.filter((todo) => todo.id !== id));
+    } else {
+      // 완료된 항목을 다시 원래 리스트로 이동
+      setTodos([...todos, todo]);
+      setCompletedTodos(completedTodos.filter((item) => item.id !== id));
+    }
+  }
 };
 
-// D 삭제
-
+// D: 할 일 삭제
 const deleteTodo = (id) => {
   setTodos(todos.filter((todo) => todo.id !== id));
 };
+
+// D: 완료된 항목 삭제
+const deleteCompletedTodo = (id) => {
+  setCompletedTodos(completedTodos.filter((todo) => todo.id !== id));
+};
+
+
+//   // R 읽기
+//   const [todos, setTodos] = useState(() => {
+//     const storedTodos = localStorage.getItem("todos");
+//     return storedTodos ? JSON.parse(storedTodos) : [];    
+//   });
+
+
+// useEffect(() => {
+//   localStorage.setItem("todos", JSON.stringify(todos));
+
+// }, [todos]);
+
+
+
+//   // C 생성하기 - todo 등록
+// const addTodo = (text) => {
+//   setTodos([...todos, {
+//     id: Date.now(),
+//     text,
+//     completed: false
+//   }]);
+
+// };
+
+
+// //U 업데이트 - 텍스트 수정하기
+
+// const updateTodo = (id, updatedText) => {
+//   setTodos(todos.map((todo) => (todo.id === id ? {...todo, text: updatedText} : todo)));
+// };
+
+
+// //U 업데이트 - 완료 토글
+
+// const toggleComplete = (id) => {
+//   setTodos(todos.map((todo) => (todo.id === id ? {...todo, completed : !todo.completed} : todo )));
+
+// };
+
+// // D 삭제
+
+// const deleteTodo = (id) => {
+//   setTodos(todos.filter((todo) => todo.id !== id));
+// };
 
 
 
@@ -75,7 +122,7 @@ const filteredTodos = searchQuery
 
 
   // 메모 기능 만들기
-  // 으아아앙 시도중
+  // 지피티가 써줌!!! 주석까지 달아줌! 우와!!
 
    // R: 로컬 스토리지에서 메모 불러오기
    const [memo, setMemo] = useState(() => {
@@ -107,7 +154,7 @@ const filteredTodos = searchQuery
 
   return (
      <div className = {style.App}>
-        <h1>가벼운가? 라고 생각하고 싶은 리액트 투두 리스트</h1>
+        <h1>TODO-LiST SCENe</h1>
         <TodoInput addTodo = {addTodo} />
         <TodoList
           // todos={todos}
@@ -116,6 +163,9 @@ const filteredTodos = searchQuery
           toggleComplete={toggleComplete}
           deleteTodo={deleteTodo}
         />
+
+
+
         <div className={style.searchInput}>
           <SearchOutlined className={style.ico}/>
           <input 
@@ -126,13 +176,25 @@ const filteredTodos = searchQuery
           />
         </div>
 
+
+
         <div>
-        <h1>메모 작성하기 📝</h1>
+        <h2>메모 작성하기 📝</h2>
         <MemoInput 
         memo={memo} 
         updateMemo={updateMemo} 
         clearMemo={clearMemo} />
          </div>
+
+
+        {/* 완료된 항목 관리 */}
+        <h2>완료된 항목</h2>
+        <TodoList
+          todos={completedTodos}
+          updateTodo={updateTodo}
+          toggleComplete={toggleComplete}
+          deleteTodo={deleteCompletedTodo}
+        />
 
      </div>
   );

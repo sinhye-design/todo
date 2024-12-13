@@ -15,7 +15,7 @@ const MemoInput = ({ memo, updateMemo, clearMemo }) => {
       <textarea
         value={memo}
         onChange={handleChange}
-        placeholder="메모를 작성하세요..."
+        placeholder="메모를 작성할 수 있어요"
         rows="4"
         cols="50"
       />

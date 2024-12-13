@@ -19,7 +19,7 @@ const TodoItem = ({ todo, updateTodo, toggleComplete, deleteTodo }) => {
         <input 
           type="checkbox"
           checked={todo.completed}
-          onChange={() => toggleComplete(todo.id)} //요기가 이해안됨요
+          onChange={() => toggleComplete(todo.id)} 
         />
 
 
@@ -27,7 +27,7 @@ const TodoItem = ({ todo, updateTodo, toggleComplete, deleteTodo }) => {
           <input
             type="text"
             value={editText}
-            onChange={(e) => setEditText(e.target.value)} //여기도 이해안됨요
+            onChange={(e) => setEditText(e.target.value)} 
           />
         ) : (
           <span

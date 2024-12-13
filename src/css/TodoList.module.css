@@ -1,7 +1,22 @@
+.ulcontainer {
+  display: flex;
+  flex-direction: column; /* 세로로 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  justify-content: flex-start; /* 위쪽에 배치 */
+  /* padding: 20px; */
+  width: 100%; 
+  border-radius: 18px;
+  border: 2px solid #21221A; 
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+
+
 ul {
   width: 100%;
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }

@@ -25,20 +25,22 @@ const TodoInput = ({ addTodo }) => {
 
 
   return (
-    <div className={style.container}>
-      <input
+    <div className={style.todocontainer}>
+      <h2>ToDO aDD</h2>
+      <div className={style.inputframe}>
+        <input
         type="text"
         value={input}
         //// 5번줄의 input과 순환구조 
         onChange={(e) => setInput(e.target.value)}
         ////인풋이 가지고 있는 상태값(value)
         onKeyDown={handleKeyDown}
-        placeholder="오늘 해야할 일 등록하기📋"
+        placeholder="해야 할 일 작성하기📋"
         className={style.todoInput}
       
-      />  
-      <button onClick={handleAdd}> TODO 등록 <PlusCircleOutlined className={style.plusbutton} /> </button>
-
+       />  
+        <button onClick={handleAdd} className={style.inputbtn}> aDD <PlusCircleOutlined className={style.plusbutton} /> </button>
+      </div>
 
     </div>
   );
