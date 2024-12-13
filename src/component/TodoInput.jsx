@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import style from "../css/TodoInput.module.css";
-import { PlusCircleOutlined } from '@ant-design/icons';
+// import { PlusCircleOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 
 
 const TodoInput = ({ addTodo }) => {
@@ -39,7 +40,7 @@ const TodoInput = ({ addTodo }) => {
         className={style.todoInput}
       
        />  
-        <button onClick={handleAdd} className={style.inputbtn}> aDD <PlusCircleOutlined className={style.plusbutton} /> </button>
+        <button onClick={handleAdd} className={style.inputbtn}> aDD </button>
       </div>
 
     </div>

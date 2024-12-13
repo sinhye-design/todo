@@ -1,5 +1,9 @@
 import { useState } from "react";
 import style from "../css/TodoItem.module.css";
+import { EditFilled } from '@ant-design/icons';
+import { DeleteFilled } from '@ant-design/icons';
+import { CheckOutlined } from '@ant-design/icons';
+
 
 const TodoItem = ({ todo, updateTodo, toggleComplete, deleteTodo }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -38,12 +42,12 @@ const TodoItem = ({ todo, updateTodo, toggleComplete, deleteTodo }) => {
         )}        
         
         <button onClick={handleEdit}>
-          {isEditing ? '등록' : '수정'}
+          {isEditing ? <CheckOutlined /> :  <EditFilled />}
         </button>
 
 
         <button onClick={() => deleteTodo(todo.id)}>
-          삭제
+        <DeleteFilled />
         </button>
 
 

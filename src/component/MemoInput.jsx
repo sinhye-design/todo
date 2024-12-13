@@ -19,7 +19,7 @@ const MemoInput = ({ memo, updateMemo, clearMemo }) => {
         rows="4"
         cols="50"
       />
-      <button onClick={handleClear}>메모 삭제</button>
+      <button onClick={handleClear}>dEL</button>
     </div>
   );
 };

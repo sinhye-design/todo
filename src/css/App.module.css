@@ -7,29 +7,6 @@
   margin: 40px 0 0 0;
 } */
 
-/* 검색창 안에 아이콘 넣기 */
-/* .searchInput {
-  align-self: flex-end;
-  position: relative;
-}
-.searchInput > .ico {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translate(0, -50%);
-  color: #747bff;
-}
-.searchInput > input[type="search"] {
-  height: 40px;
-  border-radius: 4px;
-  padding: 8px 12px 8px 36px;
-  border: 1px solid #ddd;
-}
-
-h1 {
-  font-size: 36px;
-} */
-
 
 .App {
   width: 880px; /* 너비 880px */
@@ -74,7 +51,9 @@ h1 {
 
 .searchInput{
   height: 84px;
-  flex: 0;
+  flex: 0; 
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .thirdwrap {
@@ -82,6 +61,7 @@ h1 {
   display: flex;
   flex-direction: column;
   background-color: #FCFAEE;
+  border-top: 2px solid #21221A;
 }
 
 .completedTodo {
@@ -112,5 +92,45 @@ input {
   /* border-bottom: 1.5px solid #79776B; */
   background: #FCFAEE;
   border: none;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
+
+
+/* 검색창 안에 아이콘 넣기 */
+.searchInput {
+  align-self: flex-end;
+  position: relative;
+  height: 100%;
+}
+.searchInput > .ico {
+  position: absolute;
+  /* top: 50%; */
+  left: 12px;
+  transform: translate(0,80%);
+  color: #ff5959;
+  font-weight: 900;
+  /* background-color: aquamarine; */
+}
+.searchInput > input[type="search"] {
+  height: 40px;
+  margin-left: 24px;
+  width: calc(100% - 24px);
+  /* border-radius: 4px; */
+  /* padding: 8px 12px 8px 36px; */
+  /* border: 1px solid #ddd; */
+}
+
+
+/* 여기는 인풋의 텍스트 넣는 곳을 변경할수 있음 */
+/* .searchInput > input[placeholder="할 일을 검색할 수 있어요"] {
+  color: red;
+  background-color: #21221A;
+} */
+
+
+.completedTodo > .li {
+  background-color: #747bff;
+}

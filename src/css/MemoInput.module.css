@@ -11,9 +11,12 @@
   background-color: transparent;
   border: none;
   resize: none;
+  padding: 12px;
+  color: #79776B;
+  font-size: 14px;
 }
 
 .memoInput button {
   align-self: flex-end;
-  margin: 0 8px 8px 0;
+  margin: 0 12px 12px 0;
 }

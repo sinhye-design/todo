@@ -40,21 +40,22 @@ function App() {
 
   // U: 완료 여부 토글
   const toggleComplete = (id) => {
-    const todo = todos.find((todo) => todo.id === id);
+    const todo = todos.find((todo) => todo.id === id);  // 해당 항목 찾기
     if (todo) {
       todo.completed = !todo.completed;
-
-      // 완료된 항목을 완료된 리스트로 이동
+  
       if (todo.completed) {
+        // 완료된 항목을 완료 리스트로 이동
         setCompletedTodos([...completedTodos, todo]);
-        setTodos(todos.filter((todo) => todo.id !== id));
+        setTodos(todos.filter((todo) => todo.id !== id));  // 원본 리스트에서 삭제
       } else {
-        // 완료된 항목을 다시 원래 리스트로 이동
-        setTodos([...todos, todo]);
-        setCompletedTodos(completedTodos.filter((item) => item.id !== id));
+        // 완료를 풀면 원래 리스트로 복귀
+        setTodos([...todos, todo]);  // 원본 리스트에 추가
+        setCompletedTodos(completedTodos.filter((todo) => todo.id !== id));  // 완료 리스트에서 삭제
       }
     }
   };
+  
 
   // D: 할 일 삭제
   const deleteTodo = (id) => {
@@ -174,7 +175,7 @@ function App() {
 
           {/* 3번 */}
             <div className={style.thirdwrap}>
-              <h2>메모 작성하기 📝</h2>
+              <h2>MeMO</h2>
               <MemoInput
                 memo={memo}
                 updateMemo={updateMemo}
@@ -187,7 +188,7 @@ function App() {
       {/* 완료된 항목 관리 
       여기에 div로 묶어서 선이랑 굴리기 적용*/}
         <div className={style.completedTodo}>
-          <h2>완료된 항목</h2>
+          <h2>CoMPLeTED</h2>
           <TodoList
             todos={completedTodos}
             updateTodo={updateTodo}
