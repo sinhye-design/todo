@@ -10,7 +10,6 @@ const TodoList = ({ todos, updateTodo, toggleComplete, deleteTodo }) => {
   return (
     <div className={style.ulcontainer}>
       <ul className={style.ul}>
-        <h2>LiST</h2>
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}

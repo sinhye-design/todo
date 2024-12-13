@@ -1,0 +1,19 @@
+.memoInput {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+}
+
+.memoInput textarea {
+  width: 100%;
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  resize: none;
+}
+
+.memoInput button {
+  align-self: flex-end;
+  margin: 0 8px 8px 0;
+}
